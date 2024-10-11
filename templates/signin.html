@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='SignIn.css') }}">
+</head>
+<body>
+    <div class="sign-in-container">
+        <div class="login-form">
+            <h1>Login</h1>
+            <p>
+                By clicking Sign in below, I agree to the <a href="#" class="link">Terms of Use</a> and I accept the <a href="#" class="link">Privacy Policy</a>.
+            </p>
+              
+            <p class="or">or</p>
+
+            <form action="/login" method="POST">
+                <div class="input-group">
+                    <label for="email">Email or Swag Name</label>
+                    <input type="text" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+
+                <div class="remember-forgot">
+                    <label>
+                        <input type="checkbox" name="remember-me"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn">Sign in</button>
+            </form>
+
+            <p class="join-text">Not a member? <a href="/register" class="join-link">Join today</a></p>
+        </div>
+    </div>
+</body>
+</html>

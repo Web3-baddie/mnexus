@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esports Tournaments</title>
+    <link rel="stylesheet" href="/css/Esports.css">
+    <!-- Updated path to the CSS file -->
+</head>
+<body>
+    <div class="esports-section">
+        <h2>Esports Tournaments</h2>
+        <div class="tournament-list">
+            <div class="tournament-card">
+                <img src="https://i.pinimg.com/236x/d8/de/ce/d8dece7dc0f506ff815075991dec2cb1.jpg" alt="Tournament 1">
+                <h3>Tournament 1</h3>
+                <p>10:00 AM</p>
+                <button onclick="handleTournamentClick(1)">Join Tournament</button>
+            </div>
+
+            <div class="tournament-card">
+                <img src="https://i.pinimg.com/236x/90/6e/fb/906efbba7f9d0f9bf062b42f4797a76a.jpg" alt="Tournament 2">
+                <h3>Tournament 2</h3>
+                <p>12:00 PM</p>
+                <button onclick="handleTournamentClick(2)">Join Tournament</button>
+            </div>
+
+            <div class="tournament-card">
+                <img src="https://i.pinimg.com/236x/90/6e/fb/906efbba7f9d0f9bf062b42f4797a76a.jpg" alt="Tournament 3">
+                <h3>Tournament 3</h3>
+                <p>2:00 PM</p>
+                <button onclick="handleTournamentClick(3)">Join Tournament</button>
+            </div>
+
+            <div class="tournament-card">
+                <img src="https://via.placeholder.com/150" alt="Tournament 4">
+                <h3>Tournament 4</h3>
+                <p>4:00 PM</p>
+                <button onclick="handleTournamentClick(4)">Join Tournament</button>
+            </div>
+
+            <div class="tournament-card">
+                <img src="https://via.placeholder.com/150" alt="Tournament 5">
+                <h3>Tournament 5</h3>
+                <p>6:00 PM</p>
+                <button onclick="handleTournamentClick(5)">Join Tournament</button>
+            </div>
+
+            <div class="tournament-card">
+                <img src="https://via.placeholder.com/150" alt="Tournament 6">
+                <h3>Tournament 6</h3>
+                <p>8:00 PM</p>
+                <button onclick="handleTournamentClick(6)">Join Tournament</button>
+            </div>
+        </div>
+
+        <div id="user-type-modal" class="user-type-modal" style="display: none;">
+            <h2 id="tournament-name"></h2>
+            <p>Are you a Gamer or a Streamer?</p>
+            <button onclick="handleUserTypeSelect('gamer')">Gamer</button>
+            <button onclick="handleUserTypeSelect('streamer')">Streamer</button>
+            <button onclick="handleCloseModal()">Close</button>
+            
+            <div id="streamer-info" style="display: none;">
+                <p>You can stream for $2!</p>
+                <div id="twitch-embed"></div> <!-- Twitch stream placeholder -->
+
+                <!-- Load the Twitch embed script -->
+                <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+
+                <script type="text/javascript">
+                    function loadTwitchStream() {
+                        new Twitch.Player("twitch-embed", {
+                            channel: "mwangi_w",
+                            width: 940,
+                            height: 480,
+                            parent: ["localhost"]
+                        });
+                    }
+                </script>
+            </div>
+
+            <div id="gamer-info" style="display: none;">
+                <p>Enter details to join as a gamer!</p>
+                <form id="gamer-form" onsubmit="handleDetailsSubmit(event)">
+                    <input type="hidden" id="tournament-id" name="tournament_id">
+                    <input type="text" id="user-name" name="user_name" placeholder="Enter your name" required>
+                    <textarea id="user-description" name="user_description" placeholder="Enter a description" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+
+            <div id="payment-info" style="display: none;">
+                <p>You need to pay $5 to join the tournament.</p>
+                <button onclick="handlePayment()">Pay Now</button>
+            </div>
+
+            <div id="join-link" style="display: none;">
+                <p>Click the link below to join the tournament:</p>
+                <a id="join-url" href="#" target="_blank" rel="noopener noreferrer"></a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let selectedTournament = null;
+        let userType = '';
+        let userName = '';
+        let userDescription = '';
+        let joinLink = '';
+
+        function handleTournamentClick(id) {
+            const tournamentNames = ["Tournament 1", "Tournament 2", "Tournament 3", "Tournament 4", "Tournament 5", "Tournament 6"];
+            document.getElementById('tournament-name').textContent = tournamentNames[id - 1];
+            document.getElementById('tournament-id').value = id;  // Set tournament id in hidden field
+            selectedTournament = id;
+            document.getElementById('user-type-modal').style.display = 'block';
+        }
+
+        function handleUserTypeSelect(type) {
+            userType = type;
+            document.getElementById('streamer-info').style.display = type === 'streamer' ? 'block' : 'none';
+            document.getElementById('gamer-info').style.display = type === 'gamer' ? 'block' : 'none';
+
+            if (type === 'streamer') {
+                loadTitchStream();  // Load the Twitch stream when streamer is selected
+            }
+        }
+
+        function handleCloseModal() {
+            selectedTournament = null;
+            userType = '';
+            userName = '';
+            userDescription = '';
+            joinLink = '';
+            document.getElementById('user-type-modal').style.display = 'none';
+            document.getElementById('gamer-form').reset();
+            document.getElementById('payment-info').style.display = 'none';
+            document.getElementById('join-link').style.display = 'none';
+        }
+
+        function handleDetailsSubmit(event) {
+            event.preventDefault();
+            
+            const tournamentId = document.getElementById('tournament-id').value;
+            const userName = document.getElementById('user-name').value;
+            const userDescription = document.getElementById('user-description').value;
+
+            if (!userName || !userDescription) {
+                alert('Please enter all details.');
+                return;
+            }
+
+            fetch('/submit_gamer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `tournament_id=${tournamentId}&user_name=${userName}&user_description=${userDescription}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    document.getElementById('payment-info').style.display = 'block';
+                } else {
+                    alert('Submission failed, please try again.');
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function handlePayment() {
+            // Implement payment logic here
+            joinLink = "https://your-game-link.com"; // Replace with actual game link
+            document.getElementById('join-url').href = joinLink;
+            document.getElementById('join-url').textContent = joinLink;
+            document.getElementById('join-link').style.display = 'block';
+            alert('Payment successful! You can now join the tournament.');
+        }
+    </script>
+</body>
+</html>

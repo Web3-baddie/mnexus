@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Pool Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .sports-pool {
+            text-align: center;
+            padding: 20px;
+        }
+        .game-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .game-card {
+            width: 200px;
+            margin: 15px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: white;
+            cursor: pointer;
+            text-align: center;
+        }
+        .game-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .player-option {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        input[type="number"] {
+            width: 80%;
+            padding: 8px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sports-pool">
+        <h1>Sports Pool</h1>
+        <div class="game-cards">
+            <!-- Games cards -->
+            <div class="game-card" onclick="handleGameClick(1, 'DOTA-2 League', '10:00 AM', ['Max', 'Billy', 'Magnus'], 'https://i.pinimg.com/236x/b0/3a/9a/b03a9ab25a3e9449a6bc4645f97ba213.jpg')">
+                <h3>DOTA-2 League</h3>
+                <p>10:00 AM</p>
+                <img src="https://i.pinimg.com/236x/b0/3a/9a/b03a9ab25a3e9449a6bc4645f97ba213.jpg" alt="DOTA-2 League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(2, 'Racing League', '11:00 AM', ['Player 6', 'Player 7', 'Player 8', 'Player 9', 'Player 10'], 'https://i.pinimg.com/474x/ff/8e/65/ff8e65f546e61bc74615aacd5900af02.jpg')">
+                <h3>Racing League</h3>
+                <p>11:00 AM</p>
+                <img src="https://i.pinimg.com/474x/ff/8e/65/ff8e65f546e61bc74615aacd5900af02.jpg" alt="Racing League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(3, 'Soccer League', '12:00 PM', ['Player 11', 'Player 12', 'Player 13', 'Player 14', 'Player 15'], 'https://i.pinimg.com/236x/d8/de/ce/d8dece7dc0f506ff815075991dec2cb1.jpg')">
+                <h3>Soccer League</h3>
+                <p>12:00 PM</p>
+                <img src="https://i.pinimg.com/236x/d8/de/ce/d8dece7dc0f506ff815075991dec2cb1.jpg" alt="Soccer League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(4, 'Basketball League', '1:00 PM', ['Player 16', 'Player 17', 'Player 18', 'Player 19', 'Player 20'], 'https://i.pinimg.com/474x/95/09/29/950929c87f80f37e49c07e1318a8572e.jpg')">
+                <h3>Basketball League</h3>
+                <p>1:00 PM</p>
+                <img src="https://i.pinimg.com/474x/95/09/29/950929c87f80f37e49c07e1318a8572e.jpg" alt="Basketball League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(6, 'Hockey League', '3:00 PM', ['Player 26', 'Player 27', 'Player 28', 'Player 29', 'Player 30'], 'https://i.pinimg.com/236x/90/6e/fb/906efbba7f9d0f9bf062b42f4797a76a.jpg')">
+                <h3>Hockey League</h3>
+                <p>3:00 PM</p>
+                <img src="https://i.pinimg.com/236x/90/6e/fb/906efbba7f9d0f9bf062b42f4797a76a.jpg" alt="Hockey League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(7, 'Tennis League', '4:00 PM', ['Player 31', 'Player 32', 'Player 33', 'Player 34', 'Player 35'], 'https://i.pinimg.com/236x/bb/72/e7/bb72e70c48e3c9eea5fa19463cb0414a.jpg')">
+                <h3>Tennis League</h3>
+                <p>4:00 PM</p>
+                <img src="https://i.pinimg.com/236x/bb/72/e7/bb72e70c48e3c9eea5fa19463cb0414a.jpg" alt="Tennis League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(8, 'Golf League', '5:00 PM', ['Player 36', 'Player 37', 'Player 38', 'Player 39', 'Player 40'], 'https://i.pinimg.com/236x/d4/eb/2d/d4eb2d8ee516f013d3324f317b774305.jpg')">
+                <h3>Golf League</h3>
+                <p>5:00 PM</p>
+                <img src="https://i.pinimg.com/236x/d4/eb/2d/d4eb2d8ee516f013d3324f317b774305.jpg" alt="Golf League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(9, 'Cricket League', '6:00 PM', ['Player 41', 'Player 42', 'Player 43', 'Player 44', 'Player 45'], 'https://i.pinimg.com/236x/29/e4/dd/29e4dd23020e2c948f3d10fe4fd7a199.jpg')">
+                <h3>Cricket League</h3>
+                <p>6:00 PM</p>
+                <img src="https://i.pinimg.com/236x/29/e4/dd/29e4dd23020e2c948f3d10fe4fd7a199.jpg" alt="Cricket League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(11, 'Boxing League', '8:00 PM', ['Player 51', 'Player 52', 'Player 53', 'Player 54', 'Player 55'], 'https://i.pinimg.com/236x/4b/54/bf/4b54bfb11a3eca38c70bc736e808dbb7.jpg')">
+                <h3>Boxing League</h3>
+                <p>8:00 PM</p>
+                <img src="https://i.pinimg.com/236x/4b/54/bf/4b54bfb11a3eca38c70bc736e808dbb7.jpg" alt="Boxing League">
+            </div>
+            <div class="game-card" onclick="handleGameClick(12, 'MMA League', '9:00 PM', ['Player 56', 'Player 57', 'Player 58', 'Player 59', 'Player 60'], 'https://i.pinimg.com/236x/f4/06/b8/f406b88de5:
+
+```html
+                <h3>MMA League</h3>
+                <p>9:00 PM</p>
+                <img src="https://i.pinimg.com/236x/f4/06/b8/f406b88de5b6e3fd6b79360e32572c19.jpg" alt="MMA League">
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup for Game Details -->
+    <div id="popup" class="popup">
+        <div class="popup-content" id="popupContent">
+            <h3 id="popupGameName"></h3>
+            <p id="popupGameTime"></p>
+            <img id="popupGameImage" src="" alt="Game Image">
+            <div id="playersList"></div>
+            <input type="number" placeholder="Enter bet amount" id="betAmount">
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        // Handle game click to show popup
+        function handleGameClick(id, name, time, players, imageUrl) {
+            document.getElementById('popupGameName').innerText = name;
+            document.getElementById('popupGameTime').innerText = time;
+            document.getElementById('popupGameImage').src = imageUrl;
+            
+            // Generate player options dynamically
+            let playersList = document.getElementById('playersList');
+            playersList.innerHTML = '';  // Clear previous players
+            players.forEach(player => {
+                let playerOption = document.createElement('div');
+                playerOption.className = 'player-option';
+                playerOption.innerText = player;
+                playersList.appendChild(playerOption);
+            });
+
+            document.getElementById('popup').style.display = 'flex';  // Show the popup
+        }
+
+        // Close popup
+        function closePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f7fd;
+  padding: 10px;
+  width: 100%; /* Ensure it covers the entire width */
+  position: relative; /* Ensures the bar stays in position */
+  left: 0; /* Aligns it to the left */
+  right: 0; /* Aligns it to the right */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.company-name {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6bc5fe;
+  margin-left: 10px;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+}
+
+.notifications {
+  margin-left: 15px;
+  background-color: #f3f3f3;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.notification-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.search-bar {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  margin-left: 5px;
+  width: 200px !important;
+  height: 35px !important;
+}
+
+.nav-button {
+  margin-left: 30px;
+  padding: 10px 10px;
+  background-color: #ffffff;
+  color: #030414cb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Layout for main content without the dashboard */
+.main-content {
+  display: flex;
+  flex-direction: column; /* Change to column */
+  flex: 1;
+  padding: 20px; /* Add padding */
+}
+
+.features, .trusted-partners {
+  margin-bottom: 20px; /* Adds spacing between sections */
+}
+
+/* Adjusting offer card sizes and ensuring they wrap correctly */
+.partner-cards {
+  display: flex;
+  flex-wrap: wrap; /* Ensures cards wrap to the next row */
+  gap: 20px;
+}
+
+.offer-cards {
+  display: flex;
+  flex-wrap: wrap; /* Ensures cards wrap to the next row */
+  gap: 20px;
+}
+
+.offer-card {
+  flex: 0 0 calc(20% - 20px); /* Smaller card size */
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 8px; /* Further reduced padding */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.offer-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.offer-card h3 {
+  font-size: 14px; /* Reduced font size */
+  margin-bottom: 5px;
+}
+
+.offer-card p {
+  font-size: 12px; /* Reduced font size */
+  margin-bottom: 10px;
+}
+
+.discover-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 4px 8px; /* Further reduced padding */
+  border-radius: 5px;
+  cursor: pointer;
+}

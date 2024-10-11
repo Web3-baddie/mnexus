@@ -1,0 +1,143 @@
+body
+ .sports-pool {
+  background-image: none; /* Ensure no background image is applied */
+  background-color: #fff;  /* Set a default background color */
+  padding: 120px 20px 20px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+
+
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.navbar {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  padding: 200px 20px 20px;
+  position: -webkit-sticky; /* For Safari support */
+  position: sticky;
+  top: 0; /* Stick to the top */
+  z-index: 100; /* Ensure it appears above other content */
+  width: 100%; /* Full width */
+}
+
+.sports-pool {
+  flex: 1;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 60px; /* Adjust this value based on your navbar height */
+}
+
+.game-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+}
+
+.game-card {
+  width: calc(16.66% - 20px); /* 6 cards per row */
+  margin: 10px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  padding: 10px;
+}
+
+.game-card:hover {
+  transform: scale(1.05);
+}
+
+.game-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+button {
+  background-color: rgb(24, 11, 216);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 11px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-right: 10px; /* Add space between buttons */
+}
+
+button:hover {
+  background-color: #0c92c7;
+}
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e3e7e9; /* Remove background color */
+  color: black; /* Set text color to black */
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.popup-content {
+  background-color: transparent;
+  padding: 20px;
+  box-shadow: none;
+}
+
+button {
+  background-color: rgb(56, 25, 236);
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 11px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #0c92c7;
+}
+
+input[type="number"], input[type="radio"] {
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 8px;
+  width: 80%;
+}
+.player-option {
+  display: flex;
+  gap: 0; /* Reduce the gap between the radio button and player name */
+  align-items: left;
+  margin-bottom: 10px; /* Reduce the space between options */
+}
+
+input[type="radio"] {
+  margin-left: 0; /* Reduce the space between the radio button and the label */
+}
+
+label {
+  font-size: 16px; /* Adjusted label size */
+  color: black;
+}
+.meta-mall {
+  padding: 100px 20px 20px; /* Existing padding */
+  background-image: url('https://i.pinimg.com/originals/12/e2/85/12e2851deeb35e176e7b1a0ffb4fed33.gif'); /* Replace with your image URL */
+  background-size: cover; /* Ensure the image covers the entire area */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+}
+

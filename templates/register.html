@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='SignIn.css') }}">
+</head>
+<body>
+    <div class="sign-in-container">
+        <div class="login-form">
+            <h1>Register</h1>
+            <form action="/register" method="POST">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a password" required>
+                </div>
+
+                <button type="submit" class="login-btn">Register</button>
+            </form>
+            <p class="join-text">Already a member? <a href="/login" class="join-link">Sign in</a></p>
+        </div>
+    </div>
+</body>
+</html>
